@@ -12,7 +12,7 @@ attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap
 streets.addTo(map);
 
 // Accessing the airport GeoJSON URL
-let airportData = "https://https://https://raw.githubusercontent.com/Bby-vivi/Mapping_Earthquakes/main/majorAirports.json";
+let airportData = "https://raw.githubusercontent.com/Bby-vivi/Mapping_Earthquakes/main/majorAirports.json";
 
 // Grabbin our GeoJSON data.
 d3.json(airportData).then(function(data) {
