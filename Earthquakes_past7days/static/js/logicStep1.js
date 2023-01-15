@@ -18,31 +18,21 @@ attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap
 // Creae a base layer that holds both maps.
 let baseMaps = {
   "Streets": streets,
-  "Satellite Streets": satellitesStreets
+  "Satellite": satellitesStreets
 };
 
 // Create the map object with a center and zoom level.
 let map = L.map('mapid', {
-    center: [43.7, -79.3],
-    zoom: 11,
-    layers: [satellitesStreets]
+    center: [39.5, -98.5],
+    zoom: 3,
+    layers: [streets]
   });
 
-// Then we add our 'graymap' tile layer to the map.
-// light.addTo(map);
-
-// Accessing the Toronto airline routes GeoJSON URL.
-let torontoHoods = "https://raw.githubusercontent.com/Bby-vivi/Mapping_Earthquakes/main/torontoNeighborhoods.json";
-
-// Create a style for the lines.
-let myStyle = {
-    color: "#ffffa1",
-    weight: 1
-}
+// Pass our map layers into our layer control and add the layer control to the map.
+L.control.layers(baseMaps).addTo(map);
 
 // Grabbing our GeoJSON data.
-d3.json(torontoHoods).then(function(data) {
-    console.log(data);
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
   // Creating a GeoJSON layer with the retrieved data.
   L.geoJSON(data).addTo(map);
 });
